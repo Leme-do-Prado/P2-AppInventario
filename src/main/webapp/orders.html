@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Registration</title>
+    <script>
+        function registerOrder() {
+            var ordNo = document.getElementById("ordNo").value;
+            var purchAmt = document.getElementById("purchAmt").value;
+            var ordDate = document.getElementById("ordDate").value;
+            var customerId = document.getElementById("customerId").value;
+            var salesmanId = document.getElementById("salesmanId").value;
+
+            // Enviar os dados para o servidor (usando AJAX ou formulário)
+
+            // Limpar os campos após o envio
+            document.getElementById("ordNo").value = "";
+            document.getElementById("purchAmt").value = "";
+            document.getElementById("ordDate").value = "";
+            document.getElementById("customerId").value = "";
+            document.getElementById("salesmanId").value = "";
+        }
+    </script>
+</head>
+<body>
+    <h2>Order Registration</h2>
+    <input type="text" id="ordNo" placeholder="Order Number"><br>
+    <input type="number" id="purchAmt" placeholder="Purchase Amount"><br>
+    <input type="date" id="ordDate" placeholder="Order Date"><br>
+    <input type="number" id="customerId" placeholder="Customer ID"><br>
+    <input type="number" id="salesmanId" placeholder="Salesman ID"><br>
+    <button onclick="registerOrder()">Register</button>
+</body>
+</html>

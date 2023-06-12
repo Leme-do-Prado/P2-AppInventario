@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Registration</title>
+    <script>
+        function registerCustomer() {
+            var customerId = document.getElementById("customerId").value;
+            var customerName = document.getElementById("customerName").value;
+            var city = document.getElementById("city").value;
+            var grade = document.getElementById("grade").value;
+            var salesmanId = document.getElementById("salesmanId").value;
+
+            // Enviar os dados para o servidor (usando AJAX ou formulário)
+
+            // Limpar os campos após o envio
+            document.getElementById("customerId").value = "";
+            document.getElementById("customerName").value = "";
+            document.getElementById("city").value = "";
+            document.getElementById("grade").value = "";
+            document.getElementById("salesmanId").value = "";
+        }
+    </script>
+</head>
+<body>
+    <h2>Customer Registration</h2>
+    <input type="text" id="customerId" placeholder="Customer ID"><br>
+    <input type="text" id="customerName" placeholder="Customer Name"><br>
+    <input type="text" id="city" placeholder="City"><br>
+    <input type="number" id="grade" placeholder="Grade"><br>
+    <input type="number" id="salesmanId" placeholder="Salesman ID"><br>
+    <button onclick="registerCustomer()">Register</button>
+</body>
+</html>

@@ -1,6 +1,8 @@
 package com.inventario.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,18 +15,19 @@ import com.inventario.model.Orders;
 public class OrdersDAO {
 
     public void addOrder(Orders order) {
+    	String URL = "jdbc:mysql://localhost:8080/Inventario?user=host&password=";
         Connection connection = null;
         PreparedStatement statement = null;
 
         try {
-            connection = DatabaseConnection.getConnection();
+            connection = DriverManager.getConnection(URL);
 
             String sql = "INSERT INTO Orders (Ord_no, Purch_amt, Ord_date, Customer_Id, Salesman_Id) VALUES (?, ?, ?, ?, ?)";
             statement = connection.prepareStatement(sql);
 
             statement.setInt(1, order.getOrdNo());
             statement.setInt(2, order.getPurchAmt());
-            statement.setDate(3, order.getOrdDate());
+            statement.setDate(3, (Date) order.getOrdDate());
             statement.setInt(4, order.getCustomerId());
             statement.setInt(5, order.getSalesmanId());
 

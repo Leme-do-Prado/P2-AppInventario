@@ -1,6 +1,7 @@
 package com.inventario.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,15 +14,15 @@ import com.inventario.model.Customer;
 public class CustomerDAO {
 
     public void addCustomer(Customer customer) {
+    	String URL = "jdbc:mysql://localhost:8080/Inventario?user=host&password=";
         Connection connection = null;
         PreparedStatement statement = null;
 
         try {
-            connection = DatabaseConnection.getConnection();
+            connection = DriverManager.getConnection(URL);
 
             String sql = "INSERT INTO Customer (Customer_Id, Cust_Name, City, Grade, Salesman_Id) VALUES (?, ?, ?, ?, ?)";
             statement = connection.prepareStatement(sql);
-
             statement.setInt(1, customer.getCustomerId());
             statement.setString(2, customer.getCustomerName());
             statement.setString(3, customer.getCity());

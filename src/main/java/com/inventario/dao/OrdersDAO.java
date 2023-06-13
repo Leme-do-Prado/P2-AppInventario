@@ -1,21 +1,83 @@
 package com.inventario.dao;
 
-import com.inventario.model.Orders;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dbconnection.DatabaseConnection;
+import com.inventario.model.Orders;
+
 public class OrdersDAO {
-    private List<Orders> ordersList;
 
-    public OrdersDAO() {
-        ordersList = new ArrayList<>();
+    public void addOrder(Orders order) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            connection = DatabaseConnection.getConnection();
+
+            String sql = "INSERT INTO Orders (Ord_no, Purch_amt, Ord_date, Customer_Id, Salesman_Id) VALUES (?, ?, ?, ?, ?)";
+            statement = connection.prepareStatement(sql);
+
+            statement.setInt(1, order.getOrdNo());
+            statement.setInt(2, order.getPurchAmt());
+            statement.setDate(3, order.getOrdDate());
+            statement.setInt(4, order.getCustomerId());
+            statement.setInt(5, order.getSalesmanId());
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeStatement(statement);
+            closeConnection(connection);
+        }
     }
 
-    public void addOrders(Orders orders) {
-        ordersList.add(orders);
-        // Lógica para adicionar a ordem ao banco de dados
+    public static List<Orders> getAllOrders() {
+        List<Orders> orders = new ArrayList<>();
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM Orders");
+             ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next()) {
+                Orders order = new Orders();
+                order.setOrdNo(resultSet.getInt("Ord_no"));
+                order.setPurchAmt(resultSet.getInt("Purch_amt"));
+                order.setOrdDate(resultSet.getDate("Ord_date"));
+                order.setCustomerId(resultSet.getInt("Customer_Id"));
+                order.setSalesmanId(resultSet.getInt("Salesman_Id"));
+                orders.add(order);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return orders;
     }
 
-    // Outros métodos para atualização, exclusão e consulta das ordens no banco de dados
+    private void closeStatement(PreparedStatement statement) {
+        if (statement != null) {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void closeConnection(Connection connection) {
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

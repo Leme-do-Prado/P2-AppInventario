@@ -1,13 +1,15 @@
 package com.inventario.model;
 
+import java.util.Date;
+
 public class Orders {
-    private String ordNo;
-    private double purchAmt;
-    private String ordDate;
+    private int ordNo;
+    private int purchAmt;
+    private Date ordDate;
     private int customerId;
     private int salesmanId;
 
-    public Orders(String ordNo, double purchAmt, String ordDate, int customerId, int salesmanId) {
+    public Orders(int ordNo, int purchAmt, Date ordDate, int customerId, int salesmanId) {
         this.ordNo = ordNo;
         this.purchAmt = purchAmt;
         this.ordDate = ordDate;
@@ -15,28 +17,31 @@ public class Orders {
         this.salesmanId = salesmanId;
     }
 
-	public String getOrdNo() {
+	public Orders() {
+	}
+
+	public int getOrdNo() {
 		return ordNo;
 	}
 
-	public void setOrdNo(String ordNo) {
-		this.ordNo = ordNo;
+	public void setOrdNo(int i) {
+		this.ordNo = i;
 	}
 
-	public double getPurchAmt() {
+	public int getPurchAmt() {
 		return purchAmt;
 	}
 
-	public void setPurchAmt(double purchAmt) {
+	public void setPurchAmt(int purchAmt) {
 		this.purchAmt = purchAmt;
 	}
 
-	public String getOrdDate() {
+	public Date getOrdDate() {
 		return ordDate;
 	}
 
-	public void setOrdDate(String ordDate) {
-		this.ordDate = ordDate;
+	public void setOrdDate(Date date) {
+		this.ordDate = date;
 	}
 
 	public int getCustomerId() {

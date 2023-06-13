@@ -24,8 +24,8 @@ public class SalesmanServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int salesmanId = Integer.parseInt(req.getParameter("salesmanId"));
         String name = req.getParameter("name");
-        String city = req.getParameter("city");
         double commission = Double.parseDouble(req.getParameter("commission"));
+        String city = req.getParameter("city");
 
         Salesman salesman = new Salesman(salesmanId, name, city, commission);
         salesmanDAO.addSalesman(salesman);

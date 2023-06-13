@@ -1,13 +1,13 @@
 package com.inventario.model;
 
 public class Customer {
-    private String customerId;
+    private int customerId;
     private String customerName;
     private String city;
     private int grade;
     private int salesmanId;
 
-    public Customer(String customerId, String customerName, String city, int grade, int salesmanId) {
+    public Customer(int customerId, String customerName, String city, int grade, int salesmanId) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.city = city;
@@ -15,12 +15,15 @@ public class Customer {
         this.salesmanId = salesmanId;
     }
 
-	public String getCustomerId() {
+	public Customer() {
+	}
+
+	public int getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(String customerId) {
-		this.customerId = customerId;
+	public void setCustomerId(int i) {
+		this.customerId = i;
 	}
 
 	public String getCustomerName() {

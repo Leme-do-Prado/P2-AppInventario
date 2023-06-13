@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Salesman Registration</title>
+    <title>Cadastra Vendedor</title>
     <script>
         function registerSalesman() {
             var salesmanId = document.getElementById("salesmanId").value;
@@ -9,9 +9,6 @@
             var city = document.getElementById("city").value;
             var commission = document.getElementById("commission").value;
 
-            // Enviar os dados para o servidor (usando AJAX ou formulário)
-
-            // Limpar os campos após o envio
             document.getElementById("salesmanId").value = "";
             document.getElementById("name").value = "";
             document.getElementById("city").value = "";
@@ -20,11 +17,13 @@
     </script>
 </head>
 <body>
-    <h2>Salesman Registration</h2>
+    <h2>Cadastro de Vendedores</h2>
     <input type="number" id="salesmanId" placeholder="Salesman ID"><br>
     <input type="text" id="name" placeholder="Name"><br>
     <input type="text" id="city" placeholder="City"><br>
     <input type="number" id="commission" placeholder="Commission"><br>
     <button onclick="registerSalesman()">Register</button>
+    
+        <li><a href="index.html">Indice</a></li>
 </body>
 </html>

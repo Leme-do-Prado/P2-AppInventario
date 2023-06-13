@@ -22,7 +22,7 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String customerId = req.getParameter("customerId");
+        int customerId = Integer.parseInt(req.getParameter("customerId"));
         String customerName = req.getParameter("customerName");
         String city = req.getParameter("city");
         int grade = Integer.parseInt(req.getParameter("grade"));

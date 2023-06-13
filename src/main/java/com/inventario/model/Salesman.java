@@ -13,6 +13,9 @@ public class Salesman {
         this.commission = commission;
     }
 
+	public Salesman() {
+	}
+
 	public int getSalesmanId() {
 		return salesmanId;
 	}
